@@ -5,7 +5,7 @@ import Home from "./pages/Home";
 import About from "./pages/About";
 import Dashboard from "./pages/Dashboard/Dashboard";
 import Courses from "./pages/Courses/Courses";
-import MyAccount from "./pages/MyAccount";
+import Account from "./pages/Account/Account";
 import CourseDetails from "./pages/CourseDetails/CourseDetails";
 
 function App() {
@@ -41,7 +41,7 @@ function App() {
         },
         {
           path: "/my-account",
-          element: <MyAccount />,
+          element: <Account />,
         },
       ],
     },
