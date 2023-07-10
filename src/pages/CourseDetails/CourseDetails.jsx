@@ -14,6 +14,7 @@ import icon6 from "../../assets/icon/Icon6.png";
 import icon7 from "../../assets/icon/Icon7.png";
 import icon8 from "../../assets/icon/Icon8.png";
 import cart from "../../assets/cart.png";
+import tick from "../../assets/Icon-t.png";
 
 const CourseDetails = () => {
   const [overview, setOverview] = useState(true);
@@ -47,7 +48,7 @@ const CourseDetails = () => {
         </div>
       </div>
 
-      <div className="grid grid-cols-1 md:grid-cols-12 px-5 pt-3 md:pt5 gap-3">
+      <div className="grid grid-cols-1 md:grid-cols-12 px-5 py-3 md:pt5 gap-3">
         {/* main */}
         <div className="md:col-span-9 p-3 bg-white rounded-lg">
           <figure>
@@ -60,7 +61,7 @@ const CourseDetails = () => {
             By <span className="font-bold text-black">Simon Shaw</span>,
             Illustrator and 3D designer
           </p>
-          <div className="flex items-center my-3">
+          <div className="flex items-center justify-between my-3">
             <figure>
               <img src={person} alt="" className="w-2/3" />
             </figure>
@@ -160,7 +161,7 @@ const CourseDetails = () => {
                   This course includes:
                 </h3>
                 <div className="flex flex-col gap-4">
-                  <div className="flex items-center">
+                  <div className="flex items-center justify-between">
                     <figure>
                       <img src={icon1} alt="" />
                     </figure>
@@ -168,13 +169,13 @@ const CourseDetails = () => {
                       100% Positive reviews (45)
                     </p>
                   </div>
-                  <div className="flex items-center">
+                  <div className="flex items-center justify-between">
                     <figure>
                       <img src={icon2} alt="" />
                     </figure>
                     <p className="text-sm ps-1 text-[#102844]">2167 students</p>
                   </div>
-                  <div className="flex items-center">
+                  <div className="flex items-center justify-between">
                     <figure>
                       <img src={icon3} alt="" />
                     </figure>
@@ -182,13 +183,13 @@ const CourseDetails = () => {
                       59 Lessons (9h 11m)
                     </p>
                   </div>
-                  <div className="flex items-center">
+                  <div className="flex items-center justify-between">
                     <figure>
                       <img src={icon4} alt="" />
                     </figure>
                     <p className="text-sm ps-1 text-[#102844]">6 courses</p>
                   </div>
-                  <div className="flex items-center">
+                  <div className="flex items-center justify-between">
                     <figure>
                       <img src={icon5} alt="" />
                     </figure>
@@ -196,7 +197,7 @@ const CourseDetails = () => {
                       70 downloads (70 files)
                     </p>
                   </div>
-                  <div className="flex items-center">
+                  <div className="flex items-center justify-between">
                     <figure>
                       <img src={icon6} alt="" />
                     </figure>
@@ -204,7 +205,7 @@ const CourseDetails = () => {
                       Available from the app
                     </p>
                   </div>
-                  <div className="flex items-center">
+                  <div className="flex items-center justify-between">
                     <figure>
                       <img src={icon7} alt="" />
                     </figure>
@@ -212,7 +213,7 @@ const CourseDetails = () => {
                       Audio: Spanish
                     </p>
                   </div>
-                  <div className="flex items-center">
+                  <div className="flex items-center justify-between">
                     <figure>
                       <img src={icon8} alt="" />
                     </figure>
@@ -247,7 +248,125 @@ const CourseDetails = () => {
           {/* curriculum */}
           {curriculum && (
             <div>
-              <p>curriculum</p>
+              <h3 className="text-[#102844] font-bold mb-2 text-lg">
+                Basics Overview
+              </h3>
+              <h3 className="text-[#767278] text-sm">
+                COURSE 1 - INTRODUCTION
+              </h3>
+              <div className="flex flex-col gap-3 mt-2">
+                <div className="flex items-center justify-between">
+                  <div className="flex text-sm items-center">
+                    <span className="flex rounded-full px-1 bg-[#E9EDFF]">
+                      U1
+                    </span>
+                    <p className="ps-1">Presentation</p>
+                  </div>
+                  <figure>
+                    <img src={tick} alt="" />
+                  </figure>
+                </div>
+                <div className="flex items-center justify-between">
+                  <div className="flex text-sm items-center">
+                    <span className="flex rounded-full px-1 bg-[#E9EDFF]">
+                      U2
+                    </span>
+                    <p className="ps-1">Job opportunities...</p>
+                  </div>
+                  <figure>
+                    <img src={tick} alt="" />
+                  </figure>
+                </div>
+                <div className="flex items-center justify-between">
+                  <div className="flex text-sm items-center">
+                    <span className="flex rounded-full px-1 bg-[#E9EDFF]">
+                      U3
+                    </span>
+                    <p className="ps-1">How to get the most...</p>
+                  </div>
+                  <figure>
+                    <img src={tick} alt="" />
+                  </figure>
+                </div>
+                <div className="flex items-center justify-between">
+                  <div className="flex text-sm items-center">
+                    <span className="flex rounded-full px-1 bg-[#E9EDFF]">
+                      U4
+                    </span>
+                    <p className="ps-1">How to get the most...</p>
+                  </div>
+                  <figure>
+                    <img src={tick} alt="" />
+                  </figure>
+                </div>
+              </div>
+              <div className="mt-2">
+                <h3 className="text-[#767278] text-sm">
+                  COURSE 2 - Learn Manufacturing
+                </h3>
+                <div className="flex flex-col gap-3 mt-2">
+                  <div className="flex items-center justify-between">
+                    <div className="flex text-sm items-center">
+                      <span className="flex rounded-full px-1 bg-[#E9EDFF]">
+                        U1
+                      </span>
+                      <p className="ps-1">Spontaneous chara...</p>
+                    </div>
+                    <figure>
+                      <img src={tick} alt="" />
+                    </figure>
+                  </div>
+                  <div className="flex items-center justify-between">
+                    <div className="flex text-sm items-center">
+                      <span className="flex rounded-full px-1 bg-[#E9EDFF]">
+                        U2
+                      </span>
+                      <p className="ps-1">Deformers</p>
+                    </div>
+                    <figure>
+                      <img src={tick} alt="" />
+                    </figure>
+                  </div>
+                  <div className="flex items-center justify-between">
+                    <div className="flex text-sm items-center">
+                      <span className="flex rounded-full px-1 bg-[#E9EDFF]">
+                        U3
+                      </span>
+                      <p className="ps-1">Mograph (cloner)</p>
+                    </div>
+                    <figure>
+                      <img src={tick} alt="" />
+                    </figure>
+                  </div>
+                  <div className="flex items-center justify-between">
+                    <div className="flex text-sm items-center">
+                      <span className="flex rounded-full px-1 bg-[#E9EDFF]">
+                        U4
+                      </span>
+                      <p className="ps-1">How to get the most...</p>
+                    </div>
+                    <figure>
+                      <img src={tick} alt="" />
+                    </figure>
+                  </div>
+                </div>
+              </div>
+              <div className="mt-5">
+                <p className="border-2 border-dashed text-center bg-[#F8F8FB] py-5 rounded-2xl text-xl font-bold">
+                  USD $199.00{" "}
+                  <span className="strikethrough text-base font-normal text-gray-500">
+                    $250
+                  </span>
+                </p>
+                <div className="flex justify-center mt-3 bg-[#4C6FFF] rounded-md py-3 cursor-pointer">
+                  <button className="text-white flex rounded-md gap-2">
+                    <figure>
+                      <img src={cart} alt="" />
+                    </figure>
+                    Buy Now
+                  </button>
+                </div>
+              </div>
             </div>
           )}
         </div>
