@@ -6,6 +6,7 @@ import About from "./pages/About";
 import Dashboard from "./pages/Dashboard/Dashboard";
 import Courses from "./pages/Courses/Courses";
 import MyAccount from "./pages/MyAccount";
+import CourseDetails from "./pages/CourseDetails/CourseDetails";
 
 function App() {
   const router = createBrowserRouter([
@@ -33,6 +34,10 @@ function App() {
         {
           path: "/courses",
           element: <Courses />,
+        },
+        {
+          path: "/courses/id",
+          element: <CourseDetails />,
         },
         {
           path: "/my-account",
