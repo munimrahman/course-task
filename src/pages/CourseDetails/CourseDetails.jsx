@@ -5,6 +5,15 @@ import courseImg from "../../assets/Video.png";
 import person from "../../assets/person.png";
 import Comment from "./Comment";
 import CommentBox from "./CommentBox";
+import icon1 from "../../assets/icon/Icon.png";
+import icon2 from "../../assets/icon/Icon2.png";
+import icon3 from "../../assets/icon/Icon3.png";
+import icon4 from "../../assets/icon/Icon4.png";
+import icon5 from "../../assets/icon/Icon5.png";
+import icon6 from "../../assets/icon/Icon6.png";
+import icon7 from "../../assets/icon/Icon7.png";
+import icon8 from "../../assets/icon/Icon8.png";
+import cart from "../../assets/cart.png";
 
 const CourseDetails = () => {
   const [overview, setOverview] = useState(true);
@@ -38,9 +47,9 @@ const CourseDetails = () => {
         </div>
       </div>
 
-      <div className="grid grid-cols-1 md:grid-cols-12 px-5 pt-3 md:pt5 gap-5">
+      <div className="grid grid-cols-1 md:grid-cols-12 px-5 pt-3 md:pt5 gap-3">
         {/* main */}
-        <div className="col-span-9 border p-3 bg-white rounded-lg">
+        <div className="md:col-span-9 p-3 bg-white rounded-lg">
           <figure>
             <img src={courseImg} alt="" />
           </figure>
@@ -117,11 +126,122 @@ const CourseDetails = () => {
           </div>
         </div>
         {/* sidebar */}
-        <div className="col-span-3 border p-3 bg-white rounded-lg">
+        <div className="md:col-span-3 p-3 bg-white rounded-lg">
           {/* overview */}
           {overview && (
-            <div className="border">
-              <p>Overview</p>
+            <div>
+              <h3 className="text-[#102844] font-bold mb-2 text-lg">Tags</h3>
+              <div className="flex flex-wrap gap-2">
+                <span className="bg-[#F8F8FB] text-[#767278] px-2 rounded shadow-md">
+                  Sketch
+                </span>
+                <span className="bg-[#F8F8FB] text-[#767278] px-2 rounded shadow-md">
+                  React
+                </span>
+                <span className="bg-[#F8F8FB] text-[#767278] px-2 rounded shadow-md">
+                  MERN
+                </span>
+                <span className="bg-[#F8F8FB] text-[#767278] px-2 rounded shadow-md">
+                  Node Js
+                </span>
+              </div>
+              <div className="mt-5">
+                <h3 className="text-[#102844] text-lg mb-2 font-bold">
+                  What you’ll learn
+                </h3>
+                <p className="text-[#767278] text-sm">
+                  Access to IBM Cloud modelling what is I was looking for and
+                  Aaron got me the solution.
+                </p>
+                <hr className="mt-5" />
+              </div>
+              <div className="mt-5">
+                <h3 className="text-[#102844] text-lg mb-2 font-bold">
+                  This course includes:
+                </h3>
+                <div className="flex flex-col gap-4">
+                  <div className="flex items-center">
+                    <figure>
+                      <img src={icon1} alt="" />
+                    </figure>
+                    <p className="text-sm ps-1 text-[#102844]">
+                      100% Positive reviews (45)
+                    </p>
+                  </div>
+                  <div className="flex items-center">
+                    <figure>
+                      <img src={icon2} alt="" />
+                    </figure>
+                    <p className="text-sm ps-1 text-[#102844]">2167 students</p>
+                  </div>
+                  <div className="flex items-center">
+                    <figure>
+                      <img src={icon3} alt="" />
+                    </figure>
+                    <p className="text-sm ps-1 text-[#102844]">
+                      59 Lessons (9h 11m)
+                    </p>
+                  </div>
+                  <div className="flex items-center">
+                    <figure>
+                      <img src={icon4} alt="" />
+                    </figure>
+                    <p className="text-sm ps-1 text-[#102844]">6 courses</p>
+                  </div>
+                  <div className="flex items-center">
+                    <figure>
+                      <img src={icon5} alt="" />
+                    </figure>
+                    <p className="text-sm ps-1 text-[#102844]">
+                      70 downloads (70 files)
+                    </p>
+                  </div>
+                  <div className="flex items-center">
+                    <figure>
+                      <img src={icon6} alt="" />
+                    </figure>
+                    <p className="text-sm ps-1 text-[#102844]">
+                      Available from the app
+                    </p>
+                  </div>
+                  <div className="flex items-center">
+                    <figure>
+                      <img src={icon7} alt="" />
+                    </figure>
+                    <p className="text-sm ps-1 text-[#102844]">
+                      Audio: Spanish
+                    </p>
+                  </div>
+                  <div className="flex items-center">
+                    <figure>
+                      <img src={icon8} alt="" />
+                    </figure>
+                    <p className="text-sm ps-1 text-[#102844]">
+                      Level:{" "}
+                      <span className="bg-[#FFEFE0] text-[#FF7800] px-2 rounded py-[2px]">
+                        Beginner
+                      </span>
+                    </p>
+                  </div>
+                </div>
+                <hr className="mt-5" />
+              </div>
+              <div className="mt-5">
+                <p className="border-2 border-dashed text-center bg-[#F8F8FB] py-5 rounded-2xl text-xl font-bold">
+                  USD $199.00{" "}
+                  <span className="strikethrough text-base font-normal text-gray-500">
+                    $250
+                  </span>
+                </p>
+                <div className="flex justify-center mt-3 bg-[#4C6FFF] rounded-md py-3 cursor-pointer">
+                  <button className="text-white flex rounded-md gap-2">
+                    <figure>
+                      <img src={cart} alt="" />
+                    </figure>
+                    Buy Now
+                  </button>
+                </div>
+              </div>
             </div>
           )}
           {/* curriculum */}
