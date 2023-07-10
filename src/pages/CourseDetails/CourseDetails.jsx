@@ -15,6 +15,7 @@ import icon7 from "../../assets/icon/Icon7.png";
 import icon8 from "../../assets/icon/Icon8.png";
 import cart from "../../assets/cart.png";
 import tick from "../../assets/Icon-t.png";
+import play from "../../assets/play-icon.png";
 
 const CourseDetails = () => {
   const [overview, setOverview] = useState(true);
@@ -113,7 +114,226 @@ const CourseDetails = () => {
           {/* curriculum */}
           {curriculum && (
             <div>
-              <p>Course Curriculum</p>
+              <div className="bg-[#F8F8FB] p-5 my-5 rounded-lg grid grid-cols-1 md:grid-cols-12 gap-5">
+                <div className="col-span-9">
+                  <p className="text-sm text-gray-500">Course 1 of 6</p>
+                  Course 1 - Introduction
+                  <div className="w-full h-1 bg-gray-200 rounded-full my-3">
+                    <div className="w-[70%] h-full text-center text-xs text-white bg-[#FF7800] rounded-full"></div>
+                  </div>
+                  <p className="text-sm text-gray-500">
+                    2 completed units of 11 available
+                  </p>
+                </div>
+                <div className="col-span-3 md:text-right">
+                  <button className="bg-[#4C6FFF] text-white px-3 py-2 rounded">
+                    Go to Unit 3
+                  </button>
+                </div>
+              </div>
+              {/* class details */}
+              <div className="collapse collapse-arrow">
+                <input type="radio" name="my-accordion-2" checked="checked" />
+                <div className="collapse-title text-lg font-medium">
+                  Lesson 1 - Introduction
+                </div>
+                <div className="collapse-content">
+                  <div className="overflow-x-auto">
+                    <table className="table">
+                      <tbody>
+                        {/* row 1 */}
+                        <tr>
+                          <td>
+                            <div className="flex items-center justify-between">
+                              <div className="flex items-center">
+                                <figure>
+                                  <img src={play} alt="" className="w-10/12" />
+                                </figure>
+                                <p className="ps-1">U1: Presentation</p>
+                              </div>
+                              <figure>
+                                <img src={tick} alt="" />
+                              </figure>
+                            </div>
+                          </td>
+                        </tr>
+                        {/* row 2 */}
+                        <tr>
+                          <td>
+                            <div className="flex items-center justify-between">
+                              <div className="flex items-center">
+                                <figure>
+                                  <img src={play} alt="" className="w-10/12" />
+                                </figure>
+                                <p className="ps-1">
+                                  U2: Job opportunities (career profile)
+                                </p>
+                              </div>
+                              <figure>
+                                <img src={tick} alt="" />
+                              </figure>
+                            </div>
+                          </td>
+                        </tr>
+                        {/* row 3 */}
+                        <tr>
+                          <td>
+                            <div className="flex items-center justify-between">
+                              <div className="flex items-center">
+                                <figure>
+                                  <img src={play} alt="" className="w-10/12" />
+                                </figure>
+                                <p className="ps-1">
+                                  U2: How to get the most out of this course!
+                                </p>
+                              </div>
+                              <figure>
+                                <img src={tick} alt="" />
+                              </figure>
+                            </div>
+                          </td>
+                        </tr>
+                      </tbody>
+                    </table>
+                  </div>
+                </div>
+                <hr />
+              </div>
+              <div className="collapse collapse-arrow">
+                <input type="radio" name="my-accordion-2" />
+                <div className="collapse-title text-lg font-medium">
+                  Lesson 2 - Learn Manufacturing
+                </div>
+                <div className="collapse-content">
+                  <div className="overflow-x-auto">
+                    <table className="table">
+                      <tbody>
+                        {/* row 1 */}
+                        <tr>
+                          <td>
+                            <div className="flex items-center justify-between">
+                              <div className="flex items-center">
+                                <figure>
+                                  <img src={play} alt="" className="w-10/12" />
+                                </figure>
+                                <p className="ps-1">U1: Presentation</p>
+                              </div>
+                              <figure>
+                                <img src={tick} alt="" />
+                              </figure>
+                            </div>
+                          </td>
+                        </tr>
+                        {/* row 2 */}
+                        <tr>
+                          <td>
+                            <div className="flex items-center justify-between">
+                              <div className="flex items-center">
+                                <figure>
+                                  <img src={play} alt="" className="w-10/12" />
+                                </figure>
+                                <p className="ps-1">
+                                  U2: Job opportunities (career profile)
+                                </p>
+                              </div>
+                              <figure>
+                                <img src={tick} alt="" />
+                              </figure>
+                            </div>
+                          </td>
+                        </tr>
+                        {/* row 3 */}
+                        <tr>
+                          <td>
+                            <div className="flex items-center justify-between">
+                              <div className="flex items-center">
+                                <figure>
+                                  <img src={play} alt="" className="w-10/12" />
+                                </figure>
+                                <p className="ps-1">
+                                  U2: How to get the most out of this course!
+                                </p>
+                              </div>
+                              <figure>
+                                <img src={tick} alt="" />
+                              </figure>
+                            </div>
+                          </td>
+                        </tr>
+                      </tbody>
+                    </table>
+                  </div>
+                </div>
+                <hr />
+              </div>
+              <div className="collapse collapse-arrow">
+                <input type="radio" name="my-accordion-2" />
+                <div className="collapse-title text-lg font-medium">
+                  Lesson 3 - Field Experience testing modules & investers!
+                </div>
+                <div className="collapse-content">
+                  <div className="overflow-x-auto">
+                    <table className="table">
+                      <tbody>
+                        {/* row 1 */}
+                        <tr>
+                          <td>
+                            <div className="flex items-center justify-between">
+                              <div className="flex items-center">
+                                <figure>
+                                  <img src={play} alt="" className="w-10/12" />
+                                </figure>
+                                <p className="ps-1">U1: Presentation</p>
+                              </div>
+                              <figure>
+                                <img src={tick} alt="" />
+                              </figure>
+                            </div>
+                          </td>
+                        </tr>
+                        {/* row 2 */}
+                        <tr>
+                          <td>
+                            <div className="flex items-center justify-between">
+                              <div className="flex items-center">
+                                <figure>
+                                  <img src={play} alt="" className="w-10/12" />
+                                </figure>
+                                <p className="ps-1">
+                                  U2: Job opportunities (career profile)
+                                </p>
+                              </div>
+                              <figure>
+                                <img src={tick} alt="" />
+                              </figure>
+                            </div>
+                          </td>
+                        </tr>
+                        {/* row 3 */}
+                        <tr>
+                          <td>
+                            <div className="flex items-center justify-between">
+                              <div className="flex items-center">
+                                <figure>
+                                  <img src={play} alt="" className="w-10/12" />
+                                </figure>
+                                <p className="ps-1">
+                                  U2: How to get the most out of this course!
+                                </p>
+                              </div>
+                              <figure>
+                                <img src={tick} alt="" />
+                              </figure>
+                            </div>
+                          </td>
+                        </tr>
+                      </tbody>
+                    </table>
+                  </div>
+                </div>
+                <hr />
+              </div>
+              {/* class details ends*/}
             </div>
           )}
 
