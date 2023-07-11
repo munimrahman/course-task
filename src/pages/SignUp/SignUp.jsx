@@ -1,10 +1,12 @@
 /* eslint-disable react/prop-types */
 /* eslint-disable no-unused-vars */
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import success from "../../assets/success.png";
 import { Link } from "react-router-dom";
+import { useRegisterMutation } from "../../features/auth/authApi";
 
 const SignUp = () => {
+  const [register, { data, isLoading, isError, error }] = useRegisterMutation();
   const [step, setStep] = useState(1);
   const [formData, setFormData] = useState({
     name: "",
@@ -36,8 +38,27 @@ const SignUp = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    // Process the form data
-    console.log(formData);
+    const {
+      name,
+      email,
+      position,
+      instituteName,
+      educationLevel,
+      workTime,
+      password,
+      confirmPassword,
+    } = formData;
+    const registrationData = {
+      full_name: name,
+      email,
+      position,
+      institution_name: instituteName,
+      education_level: educationLevel,
+      work_time: workTime,
+      password,
+      confirm_password: confirmPassword,
+    };
+    register(registrationData);
   };
 
   const validateStep = () => {
@@ -90,6 +111,12 @@ const SignUp = () => {
       setStep(step + 1);
     }
   };
+
+  useEffect(() => {
+    if (data?.status) nextStep();
+  }, [data]);
+
+  console.log(isError, error);
 
   const prevStep = () => {
     setStep(step - 1);
@@ -207,8 +234,8 @@ const SignUp = () => {
                   name="workTime"
                   className="select select-bordered w-full mt-1 focus:outline-none"
                 >
-                  <option value={"Full Time"}>Full Time</option>
-                  <option value={"Part Time"}>Part Time</option>
+                  <option value={"full_time"}>Full Time</option>
+                  <option value={"part_time"}>Part Time</option>
                 </select>
               </div>
             )}
@@ -264,6 +291,7 @@ const SignUp = () => {
                 <p className="text-red-500">{errors.confirmPassword}</p>
               )}
             </div>
+            {error?.data && <p className="text-red-500">{error.data.error}</p>}
             <div className="grid grid-cols-2 gap-2">
               <div
                 className="bg-blue-500 text-white text-center py-2 rounded-lg cursor-pointer mt-3"
@@ -273,7 +301,7 @@ const SignUp = () => {
               </div>
               <div
                 className="bg-blue-500 text-white text-center py-2 rounded-lg cursor-pointer mt-3"
-                onClick={nextStep}
+                onClick={handleSubmit}
               >
                 Sign Up
               </div>

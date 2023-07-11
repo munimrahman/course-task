@@ -1,9 +1,19 @@
 /* eslint-disable no-unused-vars */
-import React from "react";
+import React, { useState } from "react";
 import logo from "../../assets/task-logo.png";
 import { Link } from "react-router-dom";
+import { useLogInMutation } from "../../features/auth/authApi";
 
 const LogIn = () => {
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const [logIn, { isSuccess, isError, error }] = useLogInMutation();
+
+  const handleLogIn = (e) => {
+    e.preventDefault();
+    logIn({ email, password });
+  };
+
   return (
     <>
       <div className="flex min-h-full flex-1 flex-col justify-center px-6 py-12 lg:px-8">
@@ -15,7 +25,7 @@ const LogIn = () => {
         </div>
 
         <div className="mt-10 sm:mx-auto sm:w-full sm:max-w-sm">
-          <form className="space-y-6">
+          <form className="" onSubmit={handleLogIn}>
             <div>
               <label
                 htmlFor="email"
@@ -28,12 +38,15 @@ const LogIn = () => {
                   type="email"
                   name="email"
                   placeholder="Email Address"
-                  className="input input-bordered w-full mt-1 focus:outline-none"
+                  className="input input-bordered w-full focus:outline-none"
+                  value={email}
+                  onChange={(e) => setEmail(e.target.value)}
+                  required
                 />
               </div>
             </div>
 
-            <div>
+            <div className="mt-2">
               <div className="flex items-center justify-between">
                 <label
                   htmlFor="password"
@@ -55,17 +68,22 @@ const LogIn = () => {
                   type="password"
                   name="password"
                   placeholder="Password"
-                  className="input input-bordered w-full mt-1 focus:outline-none"
+                  className="input input-bordered w-full focus:outline-none"
+                  value={password}
+                  onChange={(e) => setPassword(e.target.value)}
+                  required
                 />
               </div>
             </div>
-
-            <div>
+            {error?.data && (
+              <p className="text-red-500 mt-2">Incorrect Email or Password</p>
+            )}
+            <div className="mt-3">
               <button
                 type="submit"
                 className="flex w-full justify-center rounded-md bg-indigo-600 px-3 py-1.5 text-sm font-semibold leading-6 text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
               >
-                Sign in
+                Log In
               </button>
             </div>
           </form>
