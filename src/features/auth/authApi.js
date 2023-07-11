@@ -25,14 +25,14 @@ export const authApi = apiSlice.injectEndpoints({
           localStorage.setItem(
             "auth",
             JSON.stringify({
-              accessToken: res.data.token,
+              accessToken: res.data.data.token,
               user: res.data.data,
             })
           );
 
           dispatch(
             userLoggedIn({
-              accessToken: res.data.token,
+              accessToken: res.data.data.token,
               user: res.data.data,
             })
           );

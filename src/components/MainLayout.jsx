@@ -18,9 +18,6 @@ const MainLayout = () => {
             <li>
               <Link to={"/sign-up"}>Sign Up</Link>
             </li>
-            <li>
-              <Link to={"/dashboard"}>Dashboard</Link>
-            </li>
           </ul>
         </div>
       </div>

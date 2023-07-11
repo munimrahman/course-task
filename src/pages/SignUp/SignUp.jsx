@@ -4,6 +4,7 @@ import React, { useEffect, useState } from "react";
 import success from "../../assets/success.png";
 import { Link } from "react-router-dom";
 import { useRegisterMutation } from "../../features/auth/authApi";
+import Loading from "../../components/Loading";
 
 const SignUp = () => {
   const [register, { data, isLoading, isError, error }] = useRegisterMutation();
@@ -300,10 +301,12 @@ const SignUp = () => {
                 Previous
               </div>
               <div
-                className="bg-blue-500 text-white text-center py-2 rounded-lg cursor-pointer mt-3"
+                className={`bg-blue-500 text-white text-center py-2 rounded-lg cursor-pointer mt-3 ${
+                  isLoading && "cursor-wait"
+                }`}
                 onClick={handleSubmit}
               >
-                Sign Up
+                {isLoading ? <Loading /> : "Sign Up"}
               </div>
             </div>
           </div>

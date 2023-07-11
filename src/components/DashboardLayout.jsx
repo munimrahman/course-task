@@ -1,13 +1,19 @@
 /* eslint-disable no-unused-vars */
 import React, { useState } from "react";
+import { useDispatch } from "react-redux";
 import { Link, NavLink, Outlet } from "react-router-dom";
+import { userLoggedOut } from "../features/auth/authSlice";
 
 const DashboardLayout = () => {
   const [active, setActive] = useState(true);
+  const dispatch = useDispatch();
 
   const activeClass = "ps-6 p-3 border-l-4 border-l-indigo-700 bg-[#DCDDDF]";
   const inActiveClass = "ps-6 p-3";
-
+  const logout = () => {
+    dispatch(userLoggedOut());
+    localStorage.clear();
+  };
   const menuItems = (
     <>
       <li>
@@ -42,7 +48,10 @@ const DashboardLayout = () => {
           Account
         </NavLink>
       </li>
-      <li className={`hover:bg-[#DCDDDF] cursor-pointer ${inActiveClass}`}>
+      <li
+        onClick={logout}
+        className={`hover:bg-[#DCDDDF] cursor-pointer ${inActiveClass}`}
+      >
         Log Out
       </li>
     </>
@@ -92,16 +101,12 @@ const DashboardLayout = () => {
                   className="mt-3 p-2 shadow menu menu-sm dropdown-content bg-base-100 rounded-box w-52"
                 >
                   <li>
-                    <a className="justify-between">
+                    <Link to={"/my-account"} className="justify-between">
                       Profile
-                      <span className="badge">New</span>
-                    </a>
+                    </Link>
                   </li>
                   <li>
-                    <a>Settings</a>
-                  </li>
-                  <li>
-                    <a>Logout</a>
+                    <span onClick={logout}>Logout</span>
                   </li>
                 </ul>
               </div>

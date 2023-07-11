@@ -10,6 +10,8 @@ import MainLayout from "./components/MainLayout";
 import LogIn from "./pages/LogIn/LogIn";
 import SignUp from "./pages/SignUp/SignUp";
 import useAuthCheck from "./hooks/useAuthCheck";
+import PublicRoute from "./Routes/PublicRoute";
+import PrivateRoute from "./Routes/PrivateRoute";
 
 function App() {
   const authCheck = useAuthCheck();
@@ -21,15 +23,27 @@ function App() {
       children: [
         {
           path: "/",
-          element: <LogIn />,
+          element: (
+            <PublicRoute>
+              <LogIn />
+            </PublicRoute>
+          ),
         },
         {
           path: "/log-in",
-          element: <LogIn />,
+          element: (
+            <PublicRoute>
+              <LogIn />
+            </PublicRoute>
+          ),
         },
         {
           path: "/sign-up",
-          element: <SignUp />,
+          element: (
+            <PublicRoute>
+              <SignUp />
+            </PublicRoute>
+          ),
         },
       ],
     },
@@ -39,23 +53,43 @@ function App() {
       children: [
         {
           path: "/dashboard",
-          element: <Dashboard />,
+          element: (
+            <PrivateRoute>
+              <Dashboard />
+            </PrivateRoute>
+          ),
         },
         {
           path: "/courses",
-          element: <Courses />,
+          element: (
+            <PrivateRoute>
+              <Courses />
+            </PrivateRoute>
+          ),
         },
         {
           path: "/add-course",
-          element: <AddCourse />,
+          element: (
+            <PrivateRoute>
+              <AddCourse />
+            </PrivateRoute>
+          ),
         },
         {
           path: "/courses/id",
-          element: <CourseDetails />,
+          element: (
+            <PrivateRoute>
+              <CourseDetails />
+            </PrivateRoute>
+          ),
         },
         {
           path: "/my-account",
-          element: <Account />,
+          element: (
+            <PrivateRoute>
+              <Account />
+            </PrivateRoute>
+          ),
         },
       ],
     },

@@ -1,18 +1,27 @@
 /* eslint-disable no-unused-vars */
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import logo from "../../assets/task-logo.png";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { useLogInMutation } from "../../features/auth/authApi";
+import Loading from "../../components/Loading";
 
 const LogIn = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const [logIn, { isSuccess, isError, error }] = useLogInMutation();
+  const [logIn, { data, isSuccess, isLoading, isError, error }] =
+    useLogInMutation();
+  const navigate = useNavigate();
 
   const handleLogIn = (e) => {
     e.preventDefault();
     logIn({ email, password });
   };
+
+  useEffect(() => {
+    if (data?.data) {
+      navigate("/dashboard");
+    }
+  }, [data, navigate]);
 
   return (
     <>
@@ -81,9 +90,12 @@ const LogIn = () => {
             <div className="mt-3">
               <button
                 type="submit"
-                className="flex w-full justify-center rounded-md bg-indigo-600 px-3 py-1.5 text-sm font-semibold leading-6 text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
+                className={`flex w-full justify-center rounded-md bg-indigo-600 px-3 py-1.5 text-sm font-semibold leading-6 text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600 ${
+                  isLoading && "cursor-wait"
+                }`}
+                disabled={isLoading}
               >
-                Log In
+                {isLoading ? <Loading /> : "Log In"}
               </button>
             </div>
           </form>
