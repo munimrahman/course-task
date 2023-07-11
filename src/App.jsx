@@ -8,11 +8,15 @@ import Courses from "./pages/Courses/Courses";
 import Account from "./pages/Account/Account";
 import CourseDetails from "./pages/CourseDetails/CourseDetails";
 import AddCourse from "./pages/AddCourse/AddCourse";
+import MainLayout from "./components/MainLayout";
+import LogIn from "./pages/LogIn/LogIn";
+import SignUp from "./pages/SignUp/SignUp";
 
 function App() {
   const router = createBrowserRouter([
     {
       path: "/",
+      element: <MainLayout />,
       children: [
         {
           path: "/",
@@ -21,6 +25,14 @@ function App() {
         {
           path: "/about",
           element: <About />,
+        },
+        {
+          path: "/log-in",
+          element: <LogIn />,
+        },
+        {
+          path: "/sign-up",
+          element: <SignUp />,
         },
       ],
     },
