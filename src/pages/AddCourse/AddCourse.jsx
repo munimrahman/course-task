@@ -11,7 +11,7 @@ const AddCourse = () => {
 
   const { getRootProps: getRootfileProps, getInputProps: getInputfileProps } =
     useDropzone({
-      accept: "image/*",
+      // accept: "image/*",
       onDrop: (acceptedFile) => {
         setFile(
           Object.assign(acceptedFile[0], {
@@ -25,7 +25,7 @@ const AddCourse = () => {
     getRootProps: getRootThumbnailProps,
     getInputProps: getInputThumbnailProps,
   } = useDropzone({
-    accept: "image/*",
+    // accept: "image/*",
     onDrop: (acceptedFile) => {
       setThumbnail(
         Object.assign(acceptedFile[0], {
@@ -37,7 +37,7 @@ const AddCourse = () => {
 
   const { getRootProps: getRootIntroProps, getInputProps: getInputIntroProps } =
     useDropzone({
-      accept: "image/*",
+      // accept: "image/*",
       onDrop: (acceptedFile) => {
         setIntroFile(
           Object.assign(acceptedFile[0], {
