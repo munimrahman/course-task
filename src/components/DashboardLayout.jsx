@@ -28,6 +28,14 @@ const DashboardLayout = () => {
       </li>
       <li>
         <NavLink
+          to={"/add-course"}
+          className={({ isActive }) => (isActive ? activeClass : inActiveClass)}
+        >
+          Add New Course
+        </NavLink>
+      </li>
+      <li>
+        <NavLink
           to={"/my-account"}
           className={({ isActive }) => (isActive ? activeClass : inActiveClass)}
         >

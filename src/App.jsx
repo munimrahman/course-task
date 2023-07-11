@@ -7,6 +7,7 @@ import Dashboard from "./pages/Dashboard/Dashboard";
 import Courses from "./pages/Courses/Courses";
 import Account from "./pages/Account/Account";
 import CourseDetails from "./pages/CourseDetails/CourseDetails";
+import AddCourse from "./pages/AddCourse/AddCourse";
 
 function App() {
   const router = createBrowserRouter([
@@ -34,6 +35,10 @@ function App() {
         {
           path: "/courses",
           element: <Courses />,
+        },
+        {
+          path: "/add-course",
+          element: <AddCourse />,
         },
         {
           path: "/courses/id",
