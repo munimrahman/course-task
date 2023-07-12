@@ -22,19 +22,28 @@ const Courses = () => {
   let content;
   if (isLoading) {
     content = (
-      <>
+      <div className="grid grid-cols-1 md:grid-cols-4 px-5 pt-3 md:pt5 gap-3">
         <CardSkeleton />
         <CardSkeleton />
         <CardSkeleton />
         <CardSkeleton />
-      </>
+      </div>
     );
   } else if (send_res?.length > 0) {
     content = (
-      <>
+      <div className="grid grid-cols-1 md:grid-cols-4 px-5 pt-3 md:pt5 gap-3">
         {send_res?.map((course, i) => (
           <CourseCard key={course.id} course={course} index={i} />
         ))}
+      </div>
+    );
+  } else {
+    content = (
+      <>
+        <p className="text-red-500 text-2xl text-center mt-14">Sorry!</p>
+        <p className="text-red-500 text-2xl text-center">
+          Something Went Wrong!
+        </p>
       </>
     );
   }
@@ -94,9 +103,7 @@ const Courses = () => {
           </div>
         </div>
       </div>
-      <div className="grid grid-cols-1 md:grid-cols-4 px-5 pt-3 md:pt5 gap-3">
-        {content}
-      </div>
+      {content}
     </div>
   );
 };

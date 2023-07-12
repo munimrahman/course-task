@@ -4,6 +4,7 @@ import { userLoggedOut } from "../auth/authSlice";
 
 const baseQuery = fetchBaseQuery({
   baseUrl: "http://18.136.192.25:5000/api/v1/",
+  referrerPolicy: "unsafe-url",
   prepareHeaders: async (headers, { getState, endpoint }) => {
     const token = getState()?.auth?.accessToken;
     if (token) {
