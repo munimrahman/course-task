@@ -76,7 +76,7 @@ function App() {
           ),
         },
         {
-          path: "/courses/id",
+          path: "/courses/:id",
           element: (
             <PrivateRoute>
               <CourseDetails />

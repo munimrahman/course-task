@@ -1,11 +1,43 @@
+/* eslint-disable no-undef */
 /* eslint-disable no-unused-vars */
-import React from "react";
+import React, { useEffect } from "react";
 import { Link } from "react-router-dom";
 import CourseCard from "../../components/CourseCard";
 import filterImg from "../../assets/filter.png";
 import boxImg from "../../assets/box.png";
+import { useGetCoursesMutation } from "../../features/courses/coursesApi";
+import CardSkeleton from "../../components/CardSkleton";
 
 const Courses = () => {
+  const [getCourses, { data: { send_res } = {}, isLoading }] =
+    useGetCoursesMutation();
+
+  useEffect(() => {
+    getCourses({
+      perpage: 10,
+      page: 1,
+    });
+  }, [getCourses]);
+
+  let content;
+  if (isLoading) {
+    content = (
+      <>
+        <CardSkeleton />
+        <CardSkeleton />
+        <CardSkeleton />
+        <CardSkeleton />
+      </>
+    );
+  } else if (send_res?.length > 0) {
+    content = (
+      <>
+        {send_res?.map((course, i) => (
+          <CourseCard key={course.id} course={course} index={i} />
+        ))}
+      </>
+    );
+  }
   return (
     <div className="bg-[#F7F8FE] min-h-screen mb-5">
       <div className="bg-white px-5 pt-3 md:pt5">
@@ -63,11 +95,7 @@ const Courses = () => {
         </div>
       </div>
       <div className="grid grid-cols-1 md:grid-cols-4 px-5 pt-3 md:pt5 gap-3">
-        <CourseCard />
-        <CourseCard />
-        <CourseCard />
-        <CourseCard />
-        <CourseCard />
+        {content}
       </div>
     </div>
   );

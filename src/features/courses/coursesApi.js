@@ -9,10 +9,7 @@ export const coursesApi = apiSlice.injectEndpoints({
       query: (data) => ({
         url: "/course/list",
         method: "POST",
-        body: {
-          perpage: 10,
-          page: 1,
-        },
+        body: data,
       }),
     }),
 
@@ -21,9 +18,7 @@ export const coursesApi = apiSlice.injectEndpoints({
       query: (data) => ({
         url: "/course/details",
         method: "POST",
-        body: {
-          course_id: "U2FsdGVkX19n9h8bO/trogNYt4bSFl2Mlk6bPh0ejik=",
-        },
+        body: data,
       }),
     }),
 
