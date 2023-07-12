@@ -25,21 +25,21 @@ export const coursesApi = apiSlice.injectEndpoints({
     //TODO: create course form data
     createCourse: builder.mutation({
       query: (data) => ({
-        url: "/videos",
+        url: "/course/create",
         method: "POST",
         body: data,
       }),
-      async onQueryStarted(arg, { queryFulfilled, dispatch }) {
-        const res = await queryFulfilled;
+      // async onQueryStarted(arg, { queryFulfilled, dispatch }) {
+      //   const res = await queryFulfilled;
 
-        if (res?.data?.id) {
-          dispatch(
-            apiSlice.util.updateQueryData("getCourses", undefined, (draft) => {
-              draft.push(res.data);
-            })
-          );
-        }
-      },
+      //   if (res?.data?.id) {
+      //     dispatch(
+      //       apiSlice.util.updateQueryData("getCourses", undefined, (draft) => {
+      //         draft.push(res.data);
+      //       })
+      //     );
+      //   }
+      // },
     }),
 
     // add comment to course page

@@ -1,12 +1,13 @@
 /* eslint-disable no-unused-vars */
 import React, { useState } from "react";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { Link, NavLink, Outlet } from "react-router-dom";
 import { userLoggedOut } from "../features/auth/authSlice";
 
 const DashboardLayout = () => {
   const [active, setActive] = useState(true);
   const dispatch = useDispatch();
+  const { user: { position } = {} } = useSelector((state) => state.auth);
 
   const activeClass = "ps-6 p-3 border-l-4 border-l-indigo-700 bg-[#DCDDDF]";
   const inActiveClass = "ps-6 p-3";
@@ -32,14 +33,18 @@ const DashboardLayout = () => {
           Courses
         </NavLink>
       </li>
-      <li>
-        <NavLink
-          to={"/add-course"}
-          className={({ isActive }) => (isActive ? activeClass : inActiveClass)}
-        >
-          Add New Course
-        </NavLink>
-      </li>
+      {position === "teacher" && (
+        <li>
+          <NavLink
+            to={"/add-course"}
+            className={({ isActive }) =>
+              isActive ? activeClass : inActiveClass
+            }
+          >
+            Add New Course
+          </NavLink>
+        </li>
+      )}
       <li>
         <NavLink
           to={"/my-account"}

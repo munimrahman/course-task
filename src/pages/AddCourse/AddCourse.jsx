@@ -1,14 +1,21 @@
 /* eslint-disable no-unused-vars */
 import React, { useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import upload from "../../assets/upload.png";
 import { useDropzone } from "react-dropzone";
+import { useCreateCourseMutation } from "../../features/courses/coursesApi";
 
 const AddCourse = () => {
+  const navigate = useNavigate();
   const [file, setFile] = useState({});
   const [thumbnail, setThumbnail] = useState({});
   const [introFile, setIntroFile] = useState({});
-
+  const [tags, setTags] = useState([]);
+  const [lessonName, setLessonName] = useState("");
+  const [description, setDescription] = useState("");
+  const [price, setPrice] = useState("");
+  const [createCourse, { isLoading, error, isError }] =
+    useCreateCourseMutation();
   const { getRootProps: getRootfileProps, getInputProps: getInputfileProps } =
     useDropzone({
       // accept: "image/*",
@@ -47,6 +54,23 @@ const AddCourse = () => {
       },
     });
 
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    // Create form data
+    const formData = new FormData();
+    formData.append("main_course_file", file);
+    formData.append("thumbnail_file", thumbnail);
+    formData.append("introduction_file", introFile);
+    tags.forEach((tag) => formData.append("tags[]", tag));
+    formData.append("lesson_name", lessonName);
+    formData.append("description", description);
+    formData.append("price", price);
+    createCourse(formData);
+    if (!isLoading && !isError) {
+      navigate("/courses");
+    }
+  };
+  console.log(error);
   return (
     <div className="bg-[#F7F8FE] min-h-screen mb-5">
       <div className="bg-white px-5 pt-3 md:pt5">
@@ -61,7 +85,7 @@ const AddCourse = () => {
         </div>
       </div>
       <div className="bg-white m-5 rounded-lg">
-        <form action="">
+        <form onSubmit={handleSubmit}>
           <div className="grid grid-cols-1 md:grid-cols-2 px-5 pt-3 md:pt-5 gap-3">
             {/* file upload */}
 
@@ -156,8 +180,11 @@ const AddCourse = () => {
                 <input
                   type="text"
                   id="tags"
-                  placeholder="Tags..."
+                  placeholder="React, Node, JavaScript"
                   className="input input-bordered w-full mt-1 focus:outline-none"
+                  value={tags.join(",")}
+                  onChange={(e) => setTags(e.target.value.split(","))}
+                  required
                 />
               </div>
               <div className="mt-2">
@@ -168,6 +195,9 @@ const AddCourse = () => {
                   id="lesson"
                   placeholder="Lesson Name..."
                   className="input input-bordered w-full mt-1 focus:outline-none"
+                  value={lessonName}
+                  onChange={(e) => setLessonName(e.target.value)}
+                  required
                 />
               </div>
               <div className="mt-2">
@@ -177,23 +207,29 @@ const AddCourse = () => {
                   id="des"
                   className="textarea textarea-bordered focus:outline-none w-full h-28 mt-1"
                   placeholder="Type Here . . ."
+                  value={description}
+                  onChange={(e) => setDescription(e.target.value)}
+                  required
                 />
               </div>
               <div className="mt-2">
                 <label htmlFor="price">Price</label>
                 <br />
                 <input
-                  type="text"
+                  type="number"
                   id="price"
                   placeholder="$500"
                   className="input input-bordered w-full mt-1 focus:outline-none"
+                  value={price}
+                  onChange={(e) => setPrice(e.target.value)}
+                  required
                 />
               </div>
             </div>
           </div>
           <div className="p-5">
             <input
-              type="button"
+              type="submit"
               className="bg-[#4C6FFF] text-white px-3 py-2 rounded-md cursor-pointer mt-2"
               value="Add Course"
             />
